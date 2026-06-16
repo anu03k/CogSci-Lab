@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTimer } from '@/shared/hooks/useTimer'
 
 interface Problem {
@@ -21,14 +21,12 @@ export function DRMDistractPhase({ onComplete }: Props) {
     }
   }
 
-  const problems = useMemo<Problem[]>(
-    () =>
-      Array.from({ length: 5 }, () => {
-        const a = 10 + Math.floor(Math.random() * 90)
-        const b = 10 + Math.floor(Math.random() * 90)
-        return { a, b, answer: a + b }
-      }),
-    [],
+  const [problems] = useState<Problem[]>(() =>
+    Array.from({ length: 5 }, () => {
+      const a = 10 + Math.floor(Math.random() * 90)
+      const b = 10 + Math.floor(Math.random() * 90)
+      return { a, b, answer: a + b }
+    }),
   )
 
   const [values, setValues] = useState<string[]>(['', '', '', '', ''])

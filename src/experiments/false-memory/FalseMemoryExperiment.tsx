@@ -52,7 +52,7 @@ export function FalseMemoryExperiment() {
   // Track when DRM study begins so we can compute an accurate durationMs.
   // Initialised to Date.now() as a safe fallback; overwritten when the phase
   // actually reaches DRM_Study, and reset to 0 when Intro is re-entered (retry).
-  const drmStartRef = useRef(Date.now())
+  const drmStartRef = useRef(0)
   useEffect(() => {
     if (state.phase === FalseMemoryPhase.DRM_Study) {
       drmStartRef.current = Date.now()
@@ -86,6 +86,7 @@ export function FalseMemoryExperiment() {
       case FalseMemoryPhase.DRM_Study:
         return (
           <DRMStudyPhase
+            key={state.drm.currentListIndex}
             lists={state.drm.lists}
             currentListIndex={state.drm.currentListIndex}
             onListComplete={(i) => dispatch({ type: 'SET_DRM_LIST_INDEX', index: i + 1 })}

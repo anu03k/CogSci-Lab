@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 interface Problem {
   a: number
@@ -10,13 +10,11 @@ interface DistractorPhaseProps {
 }
 
 export function DistractorPhase({ onComplete }: DistractorPhaseProps) {
-  const problems = useMemo<Problem[]>(
-    () =>
-      Array.from({ length: 3 }, () => ({
-        a: Math.floor(Math.random() * 20) + 10,
-        b: Math.floor(Math.random() * 20) + 10,
-      })),
-    [],
+  const [problems] = useState<Problem[]>(() =>
+    Array.from({ length: 3 }, () => ({
+      a: Math.floor(Math.random() * 20) + 10,
+      b: Math.floor(Math.random() * 20) + 10,
+    })),
   )
 
   const [answers, setAnswers] = useState<string[]>(['', '', ''])

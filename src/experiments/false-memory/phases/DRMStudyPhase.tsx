@@ -13,12 +13,6 @@ export function DRMStudyPhase({ lists, currentListIndex, onListComplete, onAllLi
   const [showInterstitial, setShowInterstitial] = useState(false)
   const allDoneRef = useRef(false)
 
-  // Reset word position when parent advances to a new list
-  useEffect(() => {
-    setWordIndex(0)
-    setShowInterstitial(false)
-  }, [currentListIndex])
-
   // Auto-advance words every 1500 ms
   useEffect(() => {
     if (showInterstitial) return

@@ -3,8 +3,11 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 export function useTimer(initialSeconds: number, onExpire: () => void) {
   const [remaining, setRemaining] = useState(initialSeconds)
   const onExpireRef = useRef(onExpire)
-  onExpireRef.current = onExpire
   const firedRef = useRef(false)
+
+  useEffect(() => {
+    onExpireRef.current = onExpire
+  }, [onExpire])
 
   useEffect(() => {
     if (remaining <= 0) {
