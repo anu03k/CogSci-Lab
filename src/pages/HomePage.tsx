@@ -15,7 +15,7 @@ export function HomePage() {
       data-testid="home-page"
       className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4"
     >
-      <p> Added testtt</p>
+      <p> Added test again</p>
       <div className="max-w-lg w-full text-center space-y-6">
         <h1 className="text-4xl font-bold text-gray-900">
           Psychology Experiment Lab
