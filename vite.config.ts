@@ -9,4 +9,19 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  build: {
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('recharts')) return 'charts'
+          if (id.includes('react')) return 'vendor'
+        },
+      },
+    },
+  },
+  preview: {
+    port: 4173,
+    strictPort: true,
+  },
 })
