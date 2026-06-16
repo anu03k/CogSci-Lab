@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useResults } from '@/context/ResultsContext'
+import { useResults } from '@/context/useResults'
 import { EXPERIMENTS } from '@/data/experiments.registry'
 import type { ExperimentId } from '@/shared/types/experiment.types'
 

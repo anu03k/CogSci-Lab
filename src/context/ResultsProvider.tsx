@@ -1,22 +1,7 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
-import type { ExperimentResult } from '@/shared/types/experiment.types'
-
-type AnyResult = ExperimentResult<unknown>
-
-interface ResultsContextValue {
-  results: AnyResult[]
-  addResult: (result: AnyResult) => void
-  clearResults: () => void
-}
-
-const ResultsContext = createContext<ResultsContextValue | null>(null)
+import { ResultsContext } from './ResultsContext'
+import type { AnyResult } from './ResultsContext'
 
 const STORAGE_KEY = 'cogsci-lab-results'
 
@@ -51,10 +36,4 @@ export function ResultsProvider({ children }: { children: ReactNode }) {
   )
 
   return <ResultsContext.Provider value={value}>{children}</ResultsContext.Provider>
-}
-
-export function useResults(): ResultsContextValue {
-  const ctx = useContext(ResultsContext)
-  if (!ctx) throw new Error('useResults must be used within ResultsProvider')
-  return ctx
 }
