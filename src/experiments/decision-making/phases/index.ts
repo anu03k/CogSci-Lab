@@ -1,0 +1,5 @@
+export { IntroPhase } from './IntroPhase'
+export { ProspectScenarioPhase } from './ProspectScenarioPhase'
+export { ProspectMiniResultPhase } from './ProspectMiniResultPhase'
+export { RiskIntroPhase } from './RiskIntroPhase'
+export { GamblePhase } from './GamblePhase'
